@@ -1,0 +1,70 @@
+/* VARIBLES */
+#callToAction {
+  background-image: url(/img/pixabay-dariuszsankowski.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff; }
+  #callToAction .jumbotron {
+    background-color: transparent; }
+    #callToAction .jumbotron h1 {
+      font-size: 4rem;
+      font-weight: bold; }
+    #callToAction .jumbotron hr {
+      color: #fff; }
+    #callToAction .jumbotron button {
+      z-index: 0; }
+
+.item {
+  position: relative;
+  margin: 15px;
+  border-left: 3px dashed antiquewhite;
+  padding: 10px 40px; }
+  .item > span {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 100%;
+    left: -20px;
+    top: 0;
+    background: antiquewhite; }
+  .item div {
+    font-size: 18px;
+    font-weight: bold; }
+  .item p {
+    margin-top: 15px; }
+  .item img {
+    padding: .25rem;
+    border: 1px solid #ddd;
+    border-radius: .125rem;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075); }
+
+#PlacesAutocomplete__autocomplete-container {
+  z-index: 1; }
+
+.mainTitle {
+  text-align: center;
+  margin: 2rem auto; }
+  .mainTitle h1, .mainTitle button {
+    display: inline-block; }
+  .mainTitle h1 {
+    font-family: "Gochi Hand", cursive;
+    color: #009688;
+    font-size: 5rem; }
+  .mainTitle button {
+    margin-left: 20px;
+    vertical-align: super; }
+
+.card-header h5 a {
+  color: #009688;
+  font-weight: bold; }
+
+.modal-backdrop {
+  z-index: 0; }
+
+footer {
+  margin-top: 5em; }

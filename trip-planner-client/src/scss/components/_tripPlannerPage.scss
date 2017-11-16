@@ -1,0 +1,24 @@
+#PlacesAutocomplete__autocomplete-container {
+  z-index: 1;
+}
+
+.mainTitle {
+  text-align: center;
+  margin: 2rem auto;    
+  h1, button {
+    display: inline-block;
+  }
+  h1 {
+    font-family: $font-handwiting;
+    color: $color-primary;
+    font-size: 5rem;
+  }
+  button {
+    margin-left: 20px;
+    vertical-align: super;
+  }
+}
+.card-header h5 a {
+  color: $color-primary;
+  font-weight: bold;
+}

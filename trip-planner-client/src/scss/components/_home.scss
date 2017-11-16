@@ -1,0 +1,20 @@
+#callToAction {
+  background-image: url(/img/pixabay-dariuszsankowski.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  .jumbotron {
+    background-color: transparent;
+    h1 {
+      font-size: 4rem;
+      font-weight: bold;
+    }
+    hr {
+      color: #fff;
+    }
+    button {
+      z-index: 0;
+    }
+  }
+}

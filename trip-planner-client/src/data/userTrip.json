@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "title": "This is the trip title",
+  "password": "password",
+  "from": "",
+  "to": "",
+  "days": 5,
+  "itinerary": [
+    {
+      "stay": "Hotel midnight",
+      "sights": ["The Tower", "The old Palace", "The new council building"]
+    }
+  ]
+}
