@@ -6,12 +6,13 @@
   background-position: center;
   color: #fff; }
   #callToAction .jumbotron {
-    background-color: transparent; }
+    background-color: transparent;
+    text-shadow: 2px 2px 20px #000; }
     #callToAction .jumbotron h1 {
       font-size: 4rem;
       font-weight: bold; }
     #callToAction .jumbotron hr {
-      color: #fff; }
+      border-top: 1px solid rgba(255, 255, 255, 0.5); }
     #callToAction .jumbotron button {
       z-index: 0; }
 
@@ -48,20 +49,33 @@
 
 .mainTitle {
   text-align: center;
-  margin: 2rem auto; }
+  margin-top: 2rem;
+  margin-bottom: 2rem; }
   .mainTitle h1, .mainTitle button {
     display: inline-block; }
   .mainTitle h1 {
+    margin-bottom: 0;
+    padding: 0.5rem 5rem;
     font-family: "Gochi Hand", cursive;
-    color: #009688;
     font-size: 5rem; }
   .mainTitle button {
-    margin-left: 20px;
     vertical-align: super; }
 
 .card-header h5 a {
   color: #009688;
   font-weight: bold; }
+
+.paracopiar {
+  font-weight: 700;
+  color: #262626;
+  background-color: #52b7b2;
+  padding: 0.1em 0 0.1em 0.5em;
+  border-radius: 2px;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.38);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.38);
+  -webkit-transform: rotateZ(-2deg);
+  -ms-transform: rotate(-2deg);
+  transform: rotateZ(-2deg); }
 
 .modal-backdrop {
   z-index: 0; }

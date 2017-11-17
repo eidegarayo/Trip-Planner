@@ -61,7 +61,7 @@ class RegisterModal extends Component {
     }
     return (
       <div className='registerModal'>
-        <button type='button' className='btn btn-lg btn-raised btn-warning mr-2' data-toggle='modal' data-target='#registerModal'>{this.props.text}</button>
+        <button type='button' className='btn btn-lg btn-raised btn-warning' data-toggle='modal' data-target='#registerModal'>{this.props.text}</button>
         <div className='modal fade' id='registerModal' tabIndex='-1' role='dialog' aria-labelledby='registerModalLabel' aria-hidden='true'>
           <div className='modal-dialog' role='document'>
             <div className='modal-content'>

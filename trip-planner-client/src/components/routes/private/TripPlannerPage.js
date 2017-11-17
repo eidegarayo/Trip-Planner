@@ -25,7 +25,7 @@ class TripPlannerPage extends Component {
 
   componentWillMount () {
     const path = this.props.location.pathname
-    const nameFromPath = path.substr((path.lastIndexOf('/') + 1))
+    const nameFromPath = path.substr((path.lastIndexOf('/trip-planner/') + 14))
     getUserTripInfo(nameFromPath)
       .then(userTripInfo => {
         this.setState({

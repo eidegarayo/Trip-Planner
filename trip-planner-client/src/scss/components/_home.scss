@@ -6,12 +6,13 @@
   color: #fff;
   .jumbotron {
     background-color: transparent;
+    text-shadow: 2px 2px 20px #000;
     h1 {
       font-size: 4rem;
       font-weight: bold;
     }
     hr {
-      color: #fff;
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
     }
     button {
       z-index: 0;
