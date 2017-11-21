@@ -1,9 +1,10 @@
+/* global localStorage */
 import React, { Component } from 'react'
-import PlacesWithStandaloneSearchBox from './tripPlannerPage/StandaloneSearchBox'
-import Timeline from './tripPlannerPage/Timeline'
-import { getUserTripInfo } from '../../../services/api'
-import HeaderPrivate from './HeaderPrivate'
-import SaveTripButton from './tripPlannerPage/SaveTripButton'
+import PlacesWithStandaloneSearchBox from '../googleMaps/StandaloneSearchBox'
+import Timeline from './Timeline'
+import { getUserTripInfo } from '../../../../services/api'
+import HeaderPrivate from '../HeaderPrivate'
+import SaveTripButton from './SaveTripButton'
 
 class TripPlannerPage extends Component {
   constructor (props) {
@@ -24,9 +25,8 @@ class TripPlannerPage extends Component {
   }
 
   componentWillMount () {
-    const path = this.props.location.pathname
-    const nameFromPath = path.substr((path.lastIndexOf('/trip-planner/') + 14))
-    getUserTripInfo(nameFromPath)
+    const pathName = localStorage.getItem('path')
+    getUserTripInfo(pathName)
       .then(userTripInfo => {
         this.setState({
           tripTitle: userTripInfo.data[0].title,
@@ -89,7 +89,6 @@ class TripPlannerPage extends Component {
                               placeholder='Mapa'
                               handleTripRoute={this.handleTripRoute}
                               label='Mapa'
-                              googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyBaR45GQOEdXVrE20Rg75fHfw30YC9mhSw&v=3.exp&libraries=geometry,drawing,places'
                               loadingElement={<div style={{ height: `100%` }} />}
                             />
                           </div>

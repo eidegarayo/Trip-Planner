@@ -1,17 +1,16 @@
+/* global localStorage */
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { setRegisterInfo } from '../../services/api'
+import { setRegisterInfo, userLogin } from '../../services/api'
 
 class RegisterModal extends Component {
   constructor (props) {
     super(props)
     this.state = {
       tripName: '',
-      tripPathName: '',
       tripDays: '',
       tripPassword: '',
-      tripRegisterMsg: false,
-      tripRegister: false
+      tripPathName: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -45,16 +44,24 @@ class RegisterModal extends Component {
   }
 
   handleRedirect () {
-    this.setState({
-      tripRegister: true
-    })
+    userLogin(this.state.tripName, this.state.tripPassword)
+      .then((response) => {
+        let {token, path} = response.data
+        localStorage.setItem('token', token)
+        localStorage.setItem('path', path)
+        this.setState({
+          tripPathName: path
+        })
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
   }
 
   render () {
-    const { tripRegister } = this.state
-    if (tripRegister) {
-      const pathName = this.state.tripName.replace(/ /g, '-').toLowerCase()
-      const userTripPath = `/trip-planner/${pathName}`
+    const { tripPathName } = this.state
+    if (tripPathName) {
+      const userTripPath = `/trip-planner/${tripPathName}`
       return (
         <Redirect to={userTripPath} />
       )
@@ -74,7 +81,7 @@ class RegisterModal extends Component {
               <div className='modal-body'>
                 <form id='form-register' onSubmit={this.handleSubmit}>
                   <div className='form-group'>
-                    <label htmlFor='inputTripName'>Título de tu viaje</label>
+                    <label htmlFor='inputTripName'>Un título original para tu viaje</label>
                     <input
                       name='tripName'
                       type='text'
@@ -107,6 +114,7 @@ class RegisterModal extends Component {
                       type='password'
                       className='form-control'
                       id='inputTripPassword'
+                      aria-describedby='tripPassword'
                       placeholder='Contraseña'
                       value={this.state.tripPassword}
                       onChange={this.handleChange}

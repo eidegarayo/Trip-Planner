@@ -1,5 +1,7 @@
+/* global localStorage */
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import { userLogin } from '../../services/api'
 
 class LoginModal extends Component {
   constructor (props) {
@@ -7,7 +9,7 @@ class LoginModal extends Component {
     this.state = {
       tripName: '',
       tripPassword: '',
-      tripLogin: false
+      tripPathName: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -26,16 +28,24 @@ class LoginModal extends Component {
 
   handleOnClick (event) {
     event.preventDefault()
-    this.setState({
-      tripLogin: true
-    })
+    let { tripName, tripPassword } = this.state
+    userLogin(tripName, tripPassword)
+      .then((response) => {
+        let {token, path} = response.data
+        localStorage.setItem('token', token)
+        localStorage.setItem('path', path)
+        this.setState({
+          tripPathName: path
+        })
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
   }
   render () {
-    const { tripLogin } = this.state
-    if (tripLogin) {
-      const pathName = this.state.tripName.replace(/ /g, '-').toLowerCase()
-      const userTripPath = `/trip-planner/${pathName}`
-      console.log(userTripPath)
+    const { tripPathName } = this.state
+    if (tripPathName) {
+      const userTripPath = `/trip-planner/${tripPathName}`
       return (
         <Redirect to={userTripPath} />
       )
@@ -70,12 +80,13 @@ class LoginModal extends Component {
                   <div className='form-group'>
                     <label htmlFor='inputTripPassword'>Contraseña</label>
                     <input
-                      name='inputTripPassword'
+                      name='tripPassword'
                       type='password'
                       className='form-control'
                       id='inputTripPassword'
+                      aria-describedby='tripPassword'
                       placeholder='Contraseña'
-                      value={this.state.inputTripPassword}
+                      value={this.state.tripPassword}
                       onChange={this.handleChange}
                     />
                   </div>

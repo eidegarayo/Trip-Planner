@@ -1,5 +1,5 @@
 import React from 'react'
-import SimpleMap from './GoogleMap'
+import SimpleMap from '../googleMaps/GoogleMap'
 
 const Timeline = (props) => {
   const days = Array(props.tripDays + 1).fill(1)
@@ -16,7 +16,6 @@ const Timeline = (props) => {
                 </div>
                 <SimpleMap
                   isMarkerShown
-                  googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyBaR45GQOEdXVrE20Rg75fHfw30YC9mhSw&v=3.exp&libraries=geometry,drawing,places'
                   loadingElement={<div style={{ height: `100%` }} />}
                   containerElement={<div style={{ height: `400px` }} />}
                   mapElement={<div style={{ height: `100%` }} />}

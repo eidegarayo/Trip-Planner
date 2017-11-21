@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withScriptjs } from 'react-google-maps'
 import StandaloneSearchBox from 'react-google-maps/lib/components/places/StandaloneSearchBox'
 
 class PlacesWithStandaloneSearchBox extends Component {
@@ -51,4 +50,4 @@ class PlacesWithStandaloneSearchBox extends Component {
   }
 }
 
-export default withScriptjs(PlacesWithStandaloneSearchBox)
+export default PlacesWithStandaloneSearchBox

@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
+import SweetAlert from 'react-bootstrap-sweetalert'
 import { updateTrip } from '../../../../services/api'
 
 class SaveTripButton extends Component {
   constructor (props) {
     super(props)
+    this.state = {
+      alert: null
+    }
     this.handleOnClick = this.handleOnClick.bind(this)
   }
 
@@ -11,14 +15,39 @@ class SaveTripButton extends Component {
     event.preventDefault()
     let { tripPath, tripRoute } = this.props
     updateTrip(tripPath, tripRoute)
-      .then()
+      .then(this.getAlert())
       .catch(function (error) {
         console.error(error)
       })
   }
 
+  getAlert () {
+    console.log('getAlert')
+    const alert = () => (
+      <SweetAlert
+        success
+        title='¡Itinerario guardado!'
+        onConfirm={() => this.hideAlert()}
+        confirmBtnText='Continuar'
+      >
+        Tus cambios se han guardado
+      </SweetAlert>
+    )
+    this.setState({
+      alert: alert()
+    })
+  }
+
+  hideAlert () {
+    console.log('HIding alert...')
+    this.setState({
+      alert: null
+    })
+  }
+
   render () {
     return (
+      <div className="save">
       <button
         id='saveTripItinerary'
         type='button'
@@ -27,6 +56,8 @@ class SaveTripButton extends Component {
       >
         GUARDAR CAMBIOS
       </button>
+      {this.state.alert}
+      </div>
     )
   }
 }

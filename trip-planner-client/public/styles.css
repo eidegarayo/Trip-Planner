@@ -80,5 +80,9 @@
 .modal-backdrop {
   z-index: 0; }
 
+.route-map {
+  width: 80%;
+  margin: 0 auto; }
+
 footer {
   margin-top: 5em; }

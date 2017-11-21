@@ -1,7 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import RegisterModal from '../../modals/RegisterModal'
 import LoginModal from '../../modals/LoginModal'
-import { Link } from 'react-router-dom'
 
 const HeaderPublic = () => (
   <header>
