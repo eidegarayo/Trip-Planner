@@ -32,6 +32,9 @@
     left: -20px;
     top: 0;
     background: antiquewhite; }
+    .item > span i {
+      line-height: unset;
+      color: #009688; }
   .item div {
     font-size: 18px;
     font-weight: bold; }
@@ -49,7 +52,6 @@
 
 .mainTitle {
   text-align: center;
-  margin-top: 2rem;
   margin-bottom: 2rem; }
   .mainTitle h1, .mainTitle button {
     display: inline-block; }
@@ -61,7 +63,10 @@
   .mainTitle button {
     vertical-align: super; }
 
-.card-header h5 a {
+#accordion .card {
+  background-color: transparent; }
+
+#accordion .card-header h5 a {
   color: #009688;
   font-weight: bold; }
 

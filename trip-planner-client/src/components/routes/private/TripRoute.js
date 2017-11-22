@@ -40,12 +40,20 @@ class TripRoute extends Component {
     const days = +this.state.tripDays
     const DirectionsService = new google.maps.DirectionsService()
     let waypoints = []
-    for(let i = 2; i < days; i++) {
-      waypoints.push({location: new google.maps.LatLng(route[i].lat, route[i].lng), stopover: true})
+    let destination
+    for (let i = 2; i < days; i++) {
+      if (route[i]) {
+        waypoints.push({location: new google.maps.LatLng(route[i].lat, route[i].lng), stopover: true})
+      }
+    }
+    for (let i = 2; i <= days; i++) {
+      if (route[i]) {
+        destination = new google.maps.LatLng(route[i].lat, route[i].lng)
+      }
     }
     DirectionsService.route({
       origin: new google.maps.LatLng(route[1].lat, route[1].lng),
-      destination: new google.maps.LatLng(route[days].lat, route[days].lng),
+      destination: destination,
       waypoints: waypoints,
       travelMode: 'DRIVING'
     }, (result, status) => {
@@ -77,7 +85,7 @@ class TripRoute extends Component {
             <h1>{this.state.tripTitle}</h1>
             <div className='alert alert-danger' role='alert'>
               {this.state.tripRouteMsg}
-          </div>
+            </div>
           </div>
           <DirectionsMap
             loadingElement={<div style={{ height: `100%` }} />}

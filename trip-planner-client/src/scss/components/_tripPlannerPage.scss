@@ -4,7 +4,6 @@
 
 .mainTitle {
   text-align: center;
-  margin-top: 2rem;
   margin-bottom: 2rem;
   h1, button {
     display: inline-block;
@@ -19,11 +18,15 @@
     vertical-align: super;
   }
 }
-.card-header h5 a {
-  color: $color-primary;
-  font-weight: bold;
+#accordion {
+  .card {
+    background-color: transparent;
+  }
+  .card-header h5 a {
+    color: $color-primary;
+    font-weight: bold;
+  }
 }
-
 
 .paracopiar {
     font-weight: 700;

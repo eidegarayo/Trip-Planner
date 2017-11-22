@@ -47,17 +47,17 @@ class SaveTripButton extends Component {
 
   render () {
     return (
-      <div className="save">
-      <button
-        id='saveTripItinerary'
-        type='button'
-        className='btn btn-lg btn-raised btn-warning mr-2'
-        onClick={this.handleOnClick}
-      >
-        GUARDAR CAMBIOS
-      </button>
-      {this.state.alert}
-      </div>
+      <span>
+        <button
+          id='saveTripItinerary'
+          type='button'
+          className='btn btn-lg btn-raised btn-warning mr-2'
+          onClick={this.handleOnClick}
+        >
+          GUARDAR CAMBIOS
+        </button>
+        {this.state.alert}
+      </span>
     )
   }
 }

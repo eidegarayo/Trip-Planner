@@ -14,14 +14,16 @@ const Timeline = (props) => {
                 <div>
                   Día {i}. {props.tripRoute[i].address}
                 </div>
-                <SimpleMap
-                  isMarkerShown
-                  loadingElement={<div style={{ height: `100%` }} />}
-                  containerElement={<div style={{ height: `400px` }} />}
-                  mapElement={<div style={{ height: `100%` }} />}
-                  lat={props.tripRoute[i].lat}
-                  lng={props.tripRoute[i].lng}
-                />
+                <div className='col-md-6'>  
+                  <SimpleMap
+                    isMarkerShown
+                    loadingElement={<div style={{ height: `100%` }} />}
+                    containerElement={<div className='img-thumbnail' style={{ height: `200px` }} />}
+                    mapElement={<div style={{ height: `100%` }} />}
+                    lat={props.tripRoute[i].lat}
+                    lng={props.tripRoute[i].lng}
+                  />
+                </div>
               </div>
             )
           }

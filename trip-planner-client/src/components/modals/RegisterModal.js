@@ -91,6 +91,7 @@ class RegisterModal extends Component {
                       placeholder='Título de tu viaje'
                       value={this.state.tripName}
                       onChange={this.handleChange}
+                      required
                       />
                   </div>
                   <div className='form-group'>
@@ -105,6 +106,7 @@ class RegisterModal extends Component {
                       placeholder='Número de días'
                       value={this.state.tripDays}
                       onChange={this.handleChange}
+                      required
                     />
                   </div>
                   <div className='form-group'>
@@ -118,11 +120,12 @@ class RegisterModal extends Component {
                       placeholder='Contraseña'
                       value={this.state.tripPassword}
                       onChange={this.handleChange}
+                      required
                     />
                   </div>
                   <div className='form-check'>
                     <label className='form-check-label'>
-                      <input type='checkbox' className='form-check-input' />
+                      <input type='checkbox' className='form-check-input' required />
                       He leído y acepto las condiciones de uso
                     </label>
                   </div>
