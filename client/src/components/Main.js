@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import Home from './routes/public/Home'
+import Home from './routes/Home'
 import TripPlannerPage from './routes/private/TripPlannerPage/'
 import TripRoute from './routes/private/TripRoute'
 

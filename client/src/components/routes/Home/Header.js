@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import RegisterModal from '../../modals/RegisterModal'
-import LoginModal from '../../modals/LoginModal'
+import RegisterModal from './modals/RegisterModal'
+import LoginModal from './modals/LoginModal'
 
-const HeaderPublic = () => (
+const Header = () => (
   <header>
     <nav className='navbar navbar-expand-lg navbar-light justify-content-between'>
       <Link to='/' className='navbar-brand'>
@@ -22,4 +22,4 @@ const HeaderPublic = () => (
   </header>
 )
 
-export default HeaderPublic
+export default Header

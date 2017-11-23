@@ -1,10 +1,10 @@
 import React from 'react'
-import HeaderPublic from './HeaderPublic'
-import RegisterModal from '../../modals/RegisterModal'
+import Header from './Header'
+import RegisterModal from './modals/RegisterModal'
 
 const Home = () => (
   <div className='home'>
-    <HeaderPublic />
+    <Header />
     <div id='callToAction' className='text-center'>
       <div className='jumbotron jumbotron-fluid'>
         <div className='container'>

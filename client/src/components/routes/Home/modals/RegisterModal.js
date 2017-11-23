@@ -1,8 +1,7 @@
-/* global localStorage */
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { register, userLogin } from '../../services/api'
-import { saveToken } from '../../services/StorageService'
+import { register, userLogin } from '../../../../services/api'
+import { saveToken } from '../../../../services/StorageService'
 
 class RegisterModal extends Component {
   constructor (props) {
@@ -29,13 +28,13 @@ class RegisterModal extends Component {
   handleRegister (event) {
     event.preventDefault()
     let { tripName, tripDays, password, username } = this.state
-    
+
     register(username, password, tripName, tripDays)
-      .then( () => { 
-        document.getElementById('form-register').className = 'd-none' 
+      .then(() => {
+        document.getElementById('form-register').className = 'd-none'
         document.getElementById('enter').className = 'btn btn-primary d-block'
       })
-      .catch( error =>  console.error(error) )
+      .catch(error => console.error(error))
   }
 
   handleRedirect () {
@@ -45,8 +44,8 @@ class RegisterModal extends Component {
         let {token, path} = response.data
         return saveToken(token, path)
       })
-      .then( ({ path }) => { this.setState({ pathRedirect: path }) })
-      .catch( error => console.error(error) )
+      .then(({ path }) => { this.setState({ pathRedirect: path }) })
+      .catch(error => console.error(error))
   }
 
   render () {
@@ -70,7 +69,7 @@ class RegisterModal extends Component {
                 </button>
               </div>
               <div className='modal-body'>
-                <form id='form-register' onSubmit={this.handleSubmit}>
+                <form id='form-register'>
                   <fieldset>
                     <legend>User Info</legend>
                     <div className='form-group'>
@@ -79,7 +78,7 @@ class RegisterModal extends Component {
                         name='username'
                         type='text'
                         className='form-control'
-                        id="username"
+                        id='username'
                         placeholder='Enter your username...'
                         value={this.state.username}
                         onChange={this.handleChange}

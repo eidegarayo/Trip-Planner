@@ -14,7 +14,7 @@ const Timeline = (props) => {
                 <div>
                   Día {i}. {props.tripRoute[i].address}
                 </div>
-                <div className='col-md-6'>  
+                <div className='col-md-6'>
                   <SimpleMap
                     isMarkerShown
                     loadingElement={<div style={{ height: `100%` }} />}
@@ -26,6 +26,8 @@ const Timeline = (props) => {
                 </div>
               </div>
             )
+          } else {
+            return <hr />
           }
         })
       }

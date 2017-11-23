@@ -1,8 +1,7 @@
-/* global localStorage */
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { userLogin } from '../../services/api'
-import { saveToken } from '../../services/StorageService'
+import { userLogin } from '../../../../services/api'
+import { saveToken } from '../../../../services/StorageService'
 
 class LoginModal extends Component {
   constructor (props) {
