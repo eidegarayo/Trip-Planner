@@ -1,7 +1,5 @@
 # dependencies
-/node_modules
-/trip-planner-client/node_modules
-/trip-server/node_modules
+node_modules
 
 # misc
 .DS_Store
