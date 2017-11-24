@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm install",
+    "postinstall": "cd server && npm install && cd ..",
     "start": "node index",
     "dev": "nodemon index"
   },

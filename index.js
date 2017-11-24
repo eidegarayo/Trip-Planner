@@ -3,7 +3,7 @@ const path = require('path')
 require('dotenv').load()
 const { PORT, URL_DB } = process.env
 
-global.__BASE = path.join(__dirname, 'server');
+global.__BASE = path.join(__dirname, 'server')
 
 const db = require('./server/config/db')
 const app = require('./server/app')
