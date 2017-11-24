@@ -1,0 +1,98 @@
+/* VARIBLES */
+/* COMMON */
+
+.hidden {
+  display: none; 
+}
+
+#callToAction {
+  background-image: url(/img/pixabay-dariuszsankowski.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff; }
+  #callToAction .jumbotron {
+    background-color: transparent;
+    text-shadow: 2px 2px 20px #000; }
+    #callToAction .jumbotron h1 {
+      font-size: 4rem;
+      font-weight: bold; }
+    #callToAction .jumbotron hr {
+      border-top: 1px solid rgba(255, 255, 255, 0.5); }
+    #callToAction .jumbotron button {
+      z-index: 0; }
+
+.item {
+  position: relative;
+  margin: 15px;
+  border-left: 3px dashed antiquewhite;
+  padding: 10px 40px; }
+  .item > span {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 100%;
+    left: -20px;
+    top: 0;
+    background: antiquewhite; }
+    .item > span i {
+      line-height: unset;
+      color: #009688; }
+  .item div {
+    font-size: 18px;
+    font-weight: bold; }
+  .item p {
+    margin-top: 15px; }
+  .item img {
+    padding: .25rem;
+    border: 1px solid #ddd;
+    border-radius: .125rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075); }
+
+#PlacesAutocomplete__autocomplete-container {
+  z-index: 1; }
+
+.mainTitle {
+  text-align: center;
+  margin-bottom: 2rem; }
+  .mainTitle h1, .mainTitle button {
+    display: inline-block; }
+  .mainTitle h1 {
+    margin-bottom: 0;
+    padding: 0.5rem 5rem;
+    font-family: "Gochi Hand", cursive;
+    font-size: 5rem; }
+  .mainTitle button {
+    vertical-align: super; }
+
+#accordion .card {
+  background-color: transparent; }
+
+#accordion .card-header h5 a {
+  color: #009688;
+  font-weight: bold; }
+
+.paracopiar {
+  font-weight: 700;
+  color: #262626;
+  background-color: #52b7b2;
+  padding: 0.1em 0 0.1em 0.5em;
+  border-radius: 2px;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.38);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.38);
+  -webkit-transform: rotateZ(-2deg);
+  -ms-transform: rotate(-2deg);
+  transform: rotateZ(-2deg); }
+
+.modal-backdrop {
+  z-index: 0; }
+
+.route-map {
+  width: 80%;
+  margin: 0 auto; }
+
+footer {
+  margin-top: 5em; }
