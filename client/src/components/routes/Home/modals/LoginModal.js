@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import AlertContainer from 'react-alert'
 import { userLogin } from '../../../../services/api'
 import { saveToken } from '../../../../services/StorageService'
 
@@ -11,28 +12,46 @@ class LoginModal extends Component {
       password: '',
       pathRedirect: ''
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleLogin = this.handleLogin.bind(this)
   }
 
-  handleChange (event) {
+  handleChange = (e) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [e.target.name]: e.target.value
     })
   }
 
-  handleLogin (event) {
-    event.preventDefault()
+  handleLogin = async (e) => {
+    e.preventDefault()
 
     const { username, password } = this.state
-    userLogin(username, password)
-      .then((response) => {
-        let {token, path} = response.data
-        return saveToken(token, path)
+
+    try {
+      const login = await userLogin(username, password)
+      const { token, path } = login.data
+      await saveToken(token, path)
+      this.setState({
+        pathRedirect: path
       })
-      .then( ({ path }) => { this.setState({ pathRedirect: path }) })
-      .catch( error => console.error(error) )
+    } 
+    catch(err) {
+      this.showAlert()
+    }
   }
+
+  showAlert = () => {
+    this.msg.show('Usuario y/o contraseña erróneos', {
+      type: 'error'
+    })
+  }
+
+  alertOptions = {
+    offset: 20,
+    position: 'top right',
+    theme: 'light',
+    time: 5000,
+    transition: 'fade'
+  }
+
   render () {
     const { pathRedirect } = this.state
     if (pathRedirect) {
@@ -42,7 +61,8 @@ class LoginModal extends Component {
       )
     }
     return (
-      <div className=''>
+      <div className='loginModal'>
+      <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <button type='button' className='btn btn-lg btn-raised btn-primary mr-2' data-toggle='modal' data-target='#loginModal'>{this.props.text}</button>
         <div className='modal fade' id='loginModal' tabIndex='-1' role='dialog' aria-labelledby='loginModalLabel' aria-hidden='true'>
           <div className='modal-dialog' role='document'>
@@ -84,6 +104,7 @@ class LoginModal extends Component {
                       type='submit'
                       className='btn btn-primary'
                       onClick={this.handleLogin}
+                      id='login-button'
                       data-dismiss='modal'
                     >
                       Iniciar sesión

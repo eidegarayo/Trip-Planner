@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import AlertContainer from 'react-alert'
 import { register, userLogin } from '../../../../services/api'
 import { saveToken } from '../../../../services/StorageService'
 
@@ -13,39 +14,53 @@ class RegisterModal extends Component {
       tripDays: '',
       pathRedirect: ''
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleRegister = this.handleRegister.bind(this)
-    this.handleRedirect = this.handleRedirect.bind(this)
   }
 
-  handleChange (event) {
-    const { name, value } = event.target
+  handleChange = (e) => {
+    const { name, value } = e.target
     this.setState({
       [name]: value
     })
   }
 
-  handleRegister (event) {
-    event.preventDefault()
-    let { tripName, tripDays, password, username } = this.state
+  handleRegister = async (e) => {
+    (e).preventDefault()
+    
+    const { username, password, tripName, tripDays } = this.state
 
-    register(username, password, tripName, tripDays)
-      .then(() => {
-        document.getElementById('form-register').className = 'd-none'
-        document.getElementById('enter').className = 'btn btn-primary d-block'
-      })
-      .catch(error => console.error(error))
+    try {
+      await register(username, password, tripName, tripDays)
+      document.getElementById('form-register').className = 'd-none'
+      document.getElementById('enter').className = 'btn btn-primary d-block'
+    } 
+    catch(err) {
+      this.showAlert()
+    }
   }
 
-  handleRedirect () {
+  showAlert = () => {
+    this.msg.show('El usuario ya existe, por favor elige otro.', {
+      type: 'error'
+    })
+  }
+
+  alertOptions = {
+    offset: 20,
+    position: 'top right',
+    theme: 'light',
+    time:5000,
+    transition:'fade'
+  }
+
+  handleRedirect = async (e) => {
     const { username, password } = this.state
-    userLogin(username, password)
-      .then((response) => {
-        let {token, path} = response.data
-        return saveToken(token, path)
-      })
-      .then(({ path }) => { this.setState({ pathRedirect: path }) })
-      .catch(error => console.error(error))
+
+    const login = await userLogin(username, password)
+    const { token, path } = login.data
+    await saveToken(token, path)
+    this.setState({
+      pathRedirect: path
+    })
   }
 
   render () {
@@ -58,6 +73,7 @@ class RegisterModal extends Component {
     }
     return (
       <div className='registerModal'>
+        <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <button type='button' className='btn btn-lg btn-raised btn-warning' data-toggle='modal' data-target='#registerModal'>{this.props.text}</button>
         <div className='modal fade' id='registerModal' tabIndex='-1' role='dialog' aria-labelledby='registerModalLabel' aria-hidden='true'>
           <div className='modal-dialog' role='document'>
@@ -69,7 +85,7 @@ class RegisterModal extends Component {
                 </button>
               </div>
               <div className='modal-body'>
-                <form id='form-register'>
+                <form onSubmit={this.handleRegister} id='form-register'>
                   <fieldset>
                     <legend>User Info</legend>
                     <div className='form-group'>
@@ -100,7 +116,7 @@ class RegisterModal extends Component {
                       />
                     </div>
                   </fieldset>
-                  
+               
                   <fieldset>
                     <legend>Trip Info</legend>
                     <div className='form-group'>

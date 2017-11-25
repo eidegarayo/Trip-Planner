@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "react": "^16.1.0",
+    "react-alert": "^2.4.0",
     "react-bootstrap-sweetalert": "^4.1.0",
     "react-dom": "^16.1.0",
     "react-google-maps": "^9.2.2",

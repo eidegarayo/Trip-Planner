@@ -16,11 +16,7 @@ export const register = (username, password, tripName, tripDays) => {
   const tripUrl = tripName.replace(/ /g, '-').toLowerCase()
   const url = `/register`
   const data = { username, password, tripName, tripDays, tripUrl }
-  return axios.post( url, data )
-
-  // return new Promise((resolve, reject) =>
-  //   resolve(userRegisterInfo)
-  //   )
+  return axios.post(url, data)
 }
 
 export const userLogin = (tripName, tripPassword) => {

@@ -1,62 +1,56 @@
 import React, { Component } from 'react'
-import SweetAlert from 'react-bootstrap-sweetalert'
+import AlertContainer from 'react-alert'
 import { updateTrip } from '../../../../services/api'
 
 class SaveTripButton extends Component {
-  constructor (props) {
+  constructor(props){
     super(props)
-    this.state = {
-      alert: null
+  }
+
+  handleUpdateTrip = async (e) => {
+    const { tripPath, tripRoute } = this.props
+    
+    try {
+      await updateTrip(tripPath, tripRoute)
+      this.showAlertSuccess()
     }
-    this.handleOnClick = this.handleOnClick.bind(this)
+    catch(err) {
+      this.showAlertError()
+    }
   }
 
-  handleOnClick (event) {
-    event.preventDefault()
-    let { tripPath, tripRoute } = this.props
-    updateTrip(tripPath, tripRoute)
-      .then(this.getAlert())
-      .catch(function (error) {
-        console.error(error)
-      })
-  }
-
-  getAlert () {
-    console.log('getAlert')
-    const alert = () => (
-      <SweetAlert
-        success
-        title='¡Itinerario guardado!'
-        onConfirm={() => this.hideAlert()}
-        confirmBtnText='Continuar'
-      >
-        Tus cambios se han guardado
-      </SweetAlert>
-    )
-    this.setState({
-      alert: alert()
+  showAlertSuccess = () => {
+    this.msg.show('Tus cambios se han guardado', {
+      type: 'success'
     })
   }
 
-  hideAlert () {
-    console.log('HIding alert...')
-    this.setState({
-      alert: null
+  showAlertError = () => {
+    this.msg.show('Error, inténtalo de nuevo', {
+      type: 'error'
     })
+  }
+
+  alertOptions = {
+    offset: 20,
+    position: 'top right',
+    theme: 'light',
+    time:5000,
+    transition:'fade'
   }
 
   render () {
     return (
       <span>
+      <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <button
           id='saveTripItinerary'
           type='button'
           className='btn btn-lg btn-raised btn-warning mr-2'
-          onClick={this.handleOnClick}
+          onClick={this.handleUpdateTrip}
         >
-          GUARDAR CAMBIOS
+          Guardar cambios
         </button>
-        {this.state.alert}
       </span>
     )
   }

@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import HeaderPrivate from './HeaderPrivate'
 import { getUserTripInfo } from '../../../services/api'
 import DirectionsMap from './googleMaps/GoogleMapDirections'
+import PolylineMap from './googleMaps/GoogleMapPolyline'
 
 class TripRoute extends Component {
   constructor () {
@@ -14,10 +15,12 @@ class TripRoute extends Component {
       tripDays: '',
       tripRoute: '',
       tripRouteMsg: '',
-      tripDirections: ''
+      tripDirections: '',
+      tripRoutePath: ''
     }
     this.getTripDirections = this.getTripDirections.bind(this)
   }
+
   componentWillMount () {
     const pathName = localStorage.getItem('path')
     getUserTripInfo(pathName)
@@ -38,7 +41,9 @@ class TripRoute extends Component {
   getTripDirections () {
     const route = this.state.tripRoute
     const days = +this.state.tripDays
+
     const DirectionsService = new google.maps.DirectionsService()
+
     let waypoints = []
     let destination
     for (let i = 2; i < days; i++) {
@@ -51,6 +56,14 @@ class TripRoute extends Component {
         destination = new google.maps.LatLng(route[i].lat, route[i].lng)
       }
     }
+
+    let routePath = []
+    for (let i = 1; i <= days; i++) {
+      if (route[i]) {
+        routePath.push(new google.maps.LatLng(route[i].lat, route[i].lng))
+      }
+    }
+
     DirectionsService.route({
       origin: new google.maps.LatLng(route[1].lat, route[1].lng),
       destination: destination,
@@ -64,7 +77,7 @@ class TripRoute extends Component {
       } else {
         console.error(`error fetching directions ${result}`)
         this.setState({
-          tripRouteMsg: '¡Ups! No tenemos información de ruta para tu itinerario'
+          tripRoutePath: routePath
         })
       }
     })
@@ -83,18 +96,28 @@ class TripRoute extends Component {
         <div className='container-fluid'>
           <div className='mainTitle'>
             <h1>{this.state.tripTitle}</h1>
-            <div className='alert alert-danger' role='alert'>
-              {this.state.tripRouteMsg}
-            </div>
+            {
+              (this.state.tripRoutePath)
+              ?
+                <PolylineMap
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={<div className='route-map' style={{ height: `600px` }} />}
+                  mapElement={<div style={{ height: `100%` }} />}
+                  path={this.state.tripRoutePath}
+                  defaultLat={defaultLat}
+                  defaultLng={defaultLng}
+                />
+
+              : <DirectionsMap
+                loadingElement={<div style={{ height: `100%` }} />}
+                containerElement={<div className='route-map' style={{ height: `600px` }} />}
+                mapElement={<div style={{ height: `100%` }} />}
+                directions={this.state.tripDirections}
+                defaultLat={defaultLat}
+                defaultLng={defaultLng}
+              />
+            }
           </div>
-          <DirectionsMap
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div className='route-map' style={{ height: `600px` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-            directions={this.state.tripDirections}
-            defaultLat={defaultLat}
-            defaultLng={defaultLng}
-          />
         </div>
       </div>
     )

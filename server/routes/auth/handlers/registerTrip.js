@@ -1,15 +1,8 @@
 const UserTrip = require(`${__BASE}/models/UserTrip`)
 
 function registerUserTrip (req, res) {
-  const { username, password, tripName, tripDays, tripUrl  } = req.body
-  console.log({ username, password, tripName, tripDays, tripUrl })
-  console.log({
-    username,
-    title: tripName,
-    path: tripUrl,
-    days: +tripDays
-  })
-  
+  const { username, password, tripName, tripDays, tripUrl } = req.body
+ 
   const newUserTrip = new UserTrip({
     username,
     title: tripName,
@@ -19,7 +12,7 @@ function registerUserTrip (req, res) {
 
   UserTrip.register(newUserTrip, password, err => {
     if (err) {
-      return res.json({ success: false, msg: 'Sorry. Username already exists.' })
+      return res.status(400).json({ success: false, msg: 'Sorry. Username already exists.' })
     }
     res.json({success: true, msg: 'New user created correctly'})
   })

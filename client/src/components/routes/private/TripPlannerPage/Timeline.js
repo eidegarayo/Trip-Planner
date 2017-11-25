@@ -26,8 +26,6 @@ const Timeline = (props) => {
                 </div>
               </div>
             )
-          } else {
-            return <hr />
           }
         })
       }
