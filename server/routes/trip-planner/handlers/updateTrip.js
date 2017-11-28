@@ -1,11 +1,12 @@
 const UserTrip = require(`${__BASE}/models/UserTrip`)
 
 function updateTrip (req, res) {
-  const { tripPath, tripRoute } = req.body
+  const { tripPath, tripRoute, tripAgenda } = req.body
+  console.log(tripAgenda)
   UserTrip.updateOne(
     {"path": tripPath},
     {
-      $set: {"itinerary": tripRoute}
+      $set: {"itinerary": tripRoute, "agenda": tripAgenda},
     }
   )
   .then(response =>

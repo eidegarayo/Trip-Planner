@@ -76,13 +76,13 @@ class LoginModal extends Component {
               <div className='modal-body'>
                 <form onSubmit={this.handleSubmit}>
                   <div className='form-group'>
-                    <label htmlFor='username'>Username</label>
+                    <label htmlFor='username'>Usuario</label>
                     <input
                       name='username'
                       type='text'
                       className='form-control'
                       id='username'
-                      placeholder='Your username...'
+                      placeholder='Tu nombre de usuario...'
                       value={this.state.username}
                       onChange={this.handleChange}
                     />
@@ -94,7 +94,7 @@ class LoginModal extends Component {
                       type='password'
                       className='form-control'
                       id='password'
-                      placeholder='Your Password...'
+                      placeholder='Tu contraseña...'
                       value={this.state.password}
                       onChange={this.handleChange}
                     />

@@ -8,10 +8,10 @@ class SaveTripButton extends Component {
   }
 
   handleUpdateTrip = async (e) => {
-    const { tripPath, tripRoute } = this.props
+    const { tripPath, tripRoute, tripAgenda } = this.props
     
     try {
-      await updateTrip(tripPath, tripRoute)
+      await updateTrip(tripPath, tripRoute, tripAgenda)
       this.showAlertSuccess()
     }
     catch(err) {

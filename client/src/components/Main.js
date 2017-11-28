@@ -4,12 +4,14 @@ import { Route } from 'react-router-dom'
 import Home from './routes/Home'
 import TripPlannerPage from './routes/private/TripPlannerPage/'
 import TripRoute from './routes/private/TripRoute'
+import Suitcase from './routes/private/Suitcase'
 
 const Main = () => (
   <div className='main'>
     <Route exact path='/' component={Home} />
     <Route exact path='/trip-planner/:tripName' component={TripPlannerPage} />
     <Route path='/trip-planner/:tripName/route' component={TripRoute} />
+    <Route path='/trip-planner/:tripName/suitcase' component={Suitcase} />
   </div>
 )
 

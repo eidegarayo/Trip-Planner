@@ -42,13 +42,14 @@ export const getUserTripInfo = tripPathName => {
     )
 }
 
-export const updateTrip = (tripPath, tripRoute) => {
+export const updateTrip = (tripPath, tripRoute, tripAgenda) => {
   const tripUpdateUrl = `/api/trip-planner/${tripPath}`
   const tripUpdate = axios.put(
     tripUpdateUrl,
     {
       tripPath: tripPath,
-      tripRoute: tripRoute
+      tripRoute: tripRoute,
+      tripAgenda: tripAgenda
     }
   )
   return new Promise((resolve, reject) =>

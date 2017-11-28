@@ -2,7 +2,7 @@
   position: relative;
   margin: 15px;
   border-left: 3px dashed antiquewhite;
-  padding: 10px 40px;
+  padding: 10px 0 10px 40px;
   > span {
     position: absolute;
     width: 40px;
@@ -19,10 +19,17 @@
       color: $color-primary;
     }  
   }
-  div {
+  &-title {
     font-size: 18px;
-    font-weight: bold;  
-  } 
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  &-masonry {
+    margin-top: 1rem;
+    .image-element-class {
+      margin-bottom: 1rem;
+    }
+  }
   p {
     margin-top: 15px;
   }
@@ -31,5 +38,23 @@
     border:1px solid #ddd;
     border-radius:.125rem;
     box-shadow:0 1px 2px rgba(0,0,0,.075)
+  }
+  .dailyInfo {
+    &:before{
+      content: url(img/chincheta.png);
+      position: absolute;
+      top: -1rem;
+      left: 15rem;
+    }
+    transform: rotate(-1deg);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: #ffffff;
+    background-image: url(img/PAPEL-CUADRICULADO-ENVEJECIDO.jpg);
+  }
+  .dailyInfo > p:first-child {
+    border-bottom: 1px solid $color-warning;
+  }
+  .dailyInfo-text {
+    margin-left: 1rem;
   }
 }

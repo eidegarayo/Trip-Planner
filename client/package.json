@@ -9,6 +9,7 @@
     "react-bootstrap-sweetalert": "^4.1.0",
     "react-dom": "^16.1.0",
     "react-google-maps": "^9.2.2",
+    "react-masonry-component": "^6.0.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "recompose": "^0.26.0"

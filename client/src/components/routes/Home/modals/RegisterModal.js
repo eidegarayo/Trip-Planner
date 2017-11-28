@@ -73,8 +73,11 @@ class RegisterModal extends Component {
     }
     return (
       <div className='registerModal'>
+
         <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
+
         <button type='button' className='btn btn-lg btn-raised btn-warning' data-toggle='modal' data-target='#registerModal'>{this.props.text}</button>
+
         <div className='modal fade' id='registerModal' tabIndex='-1' role='dialog' aria-labelledby='registerModalLabel' aria-hidden='true'>
           <div className='modal-dialog' role='document'>
             <div className='modal-content'>
@@ -86,55 +89,63 @@ class RegisterModal extends Component {
               </div>
               <div className='modal-body'>
                 <form onSubmit={this.handleRegister} id='form-register'>
-                  <fieldset>
-                    <legend>User Info</legend>
-                    <div className='form-group'>
-                      <label htmlFor='username'>Username</label>
+
+                  <hr/>
+                  
+                  <div className='form-group row'>
+                    <label htmlFor='username' class='col-sm-4 col-form-label'>Usuario</label>
+                    <div className="col-sm-8">
                       <input
                         name='username'
                         type='text'
                         className='form-control'
                         id='username'
-                        placeholder='Enter your username...'
+                        placeholder='Escoge un nombre de usuario...'
                         value={this.state.username}
                         onChange={this.handleChange}
                         required
                         />
-                    </div>
+                      </div>
+                  </div>
 
-                    <div className='form-group'>
-                      <label htmlFor='password'>Contraseña</label>
+                  <div className='form-group row'>
+                    <label htmlFor='password' class='col-sm-4 col-form-label'>Contraseña</label>
+                    <div className="col-sm-8">
                       <input
                         name='password'
                         type='password'
                         className='form-control'
                         id='password'
-                        placeholder='Enter your password...'
+                        placeholder='Contraseña...'
                         value={this.state.password}
                         onChange={this.handleChange}
                         required
                       />
                     </div>
-                  </fieldset>
-               
-                  <fieldset>
-                    <legend>Trip Info</legend>
-                    <div className='form-group'>
-                      <label htmlFor='inputTripName'>Un título original para tu viaje</label>
+                  </div>
+
+                  <hr/>
+
+                  <div className='form-group row'>
+                    <label htmlFor='inputTripName' class='col-sm-4 col-form-label'>Título de tu viaje</label>
+                    <div className="col-sm-8">
                       <input
                         name='tripName'
                         type='text'
                         className='form-control'
                         id='inputTripName'
                         aria-describedby='tripName'
-                        placeholder='Título de tu viaje'
+                        placeholder='Mi viaje destino a...'
                         value={this.state.tripName}
                         onChange={this.handleChange}
                         required
                         />
-                    </div>
-                    <div className='form-group'>
-                      <label htmlFor='inputTripDays'>¿Cuántos días dura tu aventura?</label>
+                      </div>
+                  </div>
+
+                  <div className='form-group row'>
+                    <label htmlFor='inputTripDays' class='col-sm-8 col-form-label'>¿Cuántos días dura tu aventura?</label>
+                    <div className="col-sm-4">
                       <input
                         name='tripDays'
                         type='number'
@@ -148,12 +159,14 @@ class RegisterModal extends Component {
                         required
                       />
                     </div>
-                  </fieldset>
+                  </div>
+
+                  <hr />
                   
                   <div className='form-check'>
                     <label className='form-check-label'>
                       <input type='checkbox' className='form-check-input' required />
-                      He leído y acepto las condiciones de uso
+                      <small>He leído y acepto las condiciones de uso</small>
                     </label>
                   </div>
                   <div className='modal-footer'>
@@ -167,6 +180,7 @@ class RegisterModal extends Component {
                     </button>
                   </div>
                 </form>
+
                 <button
                   id='enter'
                   className='btn btn-primary d-none'

@@ -16,7 +16,7 @@ class TripRoute extends Component {
       tripRoute: '',
       tripRouteMsg: '',
       tripDirections: '',
-      tripRoutePath: ''
+      tripRoutePolyline: ''
     }
     this.getTripDirections = this.getTripDirections.bind(this)
   }
@@ -57,10 +57,10 @@ class TripRoute extends Component {
       }
     }
 
-    let routePath = []
+    let routePolyline = []
     for (let i = 1; i <= days; i++) {
       if (route[i]) {
-        routePath.push(new google.maps.LatLng(route[i].lat, route[i].lng))
+        routePolyline.push(new google.maps.LatLng(route[i].lat, route[i].lng))
       }
     }
 
@@ -77,7 +77,7 @@ class TripRoute extends Component {
       } else {
         console.error(`error fetching directions ${result}`)
         this.setState({
-          tripRoutePath: routePath
+          tripRoutePolyline: routePolyline
         })
       }
     })
@@ -90,33 +90,57 @@ class TripRoute extends Component {
       defaultLat = this.state.tripRoute[1].lat
       defaultLng = this.state.tripRoute[1].lng
     }
+    let addresses = []
+    for (let i = 1; i <= this.state.tripDays; i++) {
+      if (this.state.tripRoute[i]) {
+        addresses.push(this.state.tripRoute[i].address)
+      }
+    }
     return (
       <div className='route'>
         <HeaderPrivate />
         <div className='container-fluid'>
           <div className='mainTitle'>
             <h1>{this.state.tripTitle}</h1>
+          </div>
+          <div className='row'>
+            <div className='col-md-9'>
             {
-              (this.state.tripRoutePath)
+              (this.state.tripRoutePolyline)
               ?
                 <PolylineMap
                   loadingElement={<div style={{ height: `100%` }} />}
-                  containerElement={<div className='route-map' style={{ height: `600px` }} />}
+                  containerElement={<div className='route-map img-thumbnail' style={{ height: `400px` }} />}
                   mapElement={<div style={{ height: `100%` }} />}
-                  path={this.state.tripRoutePath}
+                  polyline={this.state.tripRoutePolyline}
                   defaultLat={defaultLat}
                   defaultLng={defaultLng}
                 />
 
               : <DirectionsMap
                 loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div className='route-map' style={{ height: `600px` }} />}
+                containerElement={<div className='route-map img-thumbnail' style={{ height: `400px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
                 directions={this.state.tripDirections}
                 defaultLat={defaultLat}
                 defaultLng={defaultLng}
               />
             }
+            </div>
+            <div className='col-md-3'>
+              <ul className='list-group card'>
+                {
+                  addresses.map((address, i) => {
+                    return (
+                      <li key={i} className='list-group-item'>
+                        <i className='material-icons'>place</i>
+                        {address}
+                      </li>
+                    )
+                  })
+                }
+              </ul>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,20 @@
+[
+  {
+    "subject": "Sanidad",
+    "links": [
+      ["Cita previa Centro de Vacunación Internacional de Sanidad Exterior", "https://www.msssi.gob.es/sanitarios/consejos/vacExt.do"]
+    ]
+  },
+  {
+    "subject": "Documentos",
+    "links": [
+        ["Si viajas al extranjero", "http://www.exteriores.gob.es/Portal/es/ServiciosAlCiudadano/SiViajasAlExtranjero/Paginas/QueDeboHacerAntesDeViajarAlExtranjero.aspx"]
+    ]
+  },
+  {
+    "subject": "Equipaje",
+    "links": [
+      ["El tiempo en el mundo", "https://www.accuweather.com/es/world-weather"]
+    ]
+  }
+]

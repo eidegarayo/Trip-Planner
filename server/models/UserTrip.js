@@ -7,7 +7,8 @@ const UserTripSchema = new Schema({
   title: String,
   path: String,
   days: Number,
-  itinerary: { type: Schema.Types.Mixed, default: {} }
+  itinerary: { type: Schema.Types.Mixed, default: {} },
+  agenda: { type: Schema.Types.Mixed, default: {} }
 }, { collection, minimize: false })
 
 UserTripSchema.plugin(passportLocalMongoose)

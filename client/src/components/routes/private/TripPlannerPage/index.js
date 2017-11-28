@@ -5,6 +5,7 @@ import Timeline from './Timeline'
 import { getUserTripInfo } from '../../../../services/api'
 import HeaderPrivate from '../HeaderPrivate'
 import SaveTripButton from './SaveTripButton'
+import DailyInfoForm from './DailyInfoForm'
 
 class TripPlannerPage extends Component {
   constructor (props) {
@@ -13,11 +14,16 @@ class TripPlannerPage extends Component {
       tripTitle: '',
       tripPath: '',
       tripDays: '',
+      tripAgenda: {
+        1: ''
+      },
       tripRoute: {
         1: {
+          placeId: '',
           address: '',
           lat: '',
-          lng: ''
+          lng: '',
+          imgUrl: []
         }
       }
     }
@@ -32,6 +38,7 @@ class TripPlannerPage extends Component {
           tripTitle: userTripInfo.data[0].title,
           tripPath: userTripInfo.data[0].path,
           tripDays: userTripInfo.data[0].days,
+          tripAgenda: userTripInfo.data[0].agenda,
           tripRoute: userTripInfo.data[0].itinerary
         })
       })
@@ -41,12 +48,21 @@ class TripPlannerPage extends Component {
   }
 
   handleTripRoute (data) {
-    let newDay = data[3]
+    const newDay = data[1]
+    const { address, lat, lng, placeId, imgUrl } = data[0]
     let newTripRoute = this.state.tripRoute
-    newTripRoute[newDay] = {address: data[0], lat: data[1], lng: data[2]}
+    newTripRoute[newDay] = { address, lat, lng, placeId, imgUrl }
     this.setState({
       tripRoute: newTripRoute
     })
+  }
+
+  handleTripDailyInfo = (day, dailyInfo) => {
+    const newTripAgenda = this.state.tripAgenda
+    newTripAgenda[day] = dailyInfo 
+    this.setState({
+      tripAgenda: newTripAgenda
+    })      
   }
 
   render () {
@@ -60,10 +76,11 @@ class TripPlannerPage extends Component {
             <SaveTripButton
               tripRoute={this.state.tripRoute}
               tripPath={this.state.tripPath}
+              tripAgenda={this.state.tripAgenda}
             />
           </div>
           <div className='row'>
-            <div className='col-md-6'>
+            <div className='col-md-5 mt-5'>
               <div id='accordion' role='tablist'>
                 {
                   days.map((day, i) => {
@@ -87,10 +104,16 @@ class TripPlannerPage extends Component {
                           <div className='card-body'>
                             <PlacesWithStandaloneSearchBox
                               day={i + 1}
-                              placeholder='Mapa'
+                              placeholder='Ciudad'
                               handleTripRoute={this.handleTripRoute}
-                              label='Mapa'
+                              label='Ciudad'
                               loadingElement={<div style={{ height: `100%` }} />}
+                            />
+                            <hr />
+                            <DailyInfoForm 
+                              day={i + 1} 
+                              handleTripDailyInfo={this.handleTripDailyInfo}
+                              value={(this.state.tripAgenda[i + 1]) ? this.state.tripAgenda[i + 1] : ''}
                             />
                           </div>
                         </div>
@@ -100,10 +123,11 @@ class TripPlannerPage extends Component {
                 }
               </div> { /* #accordion */ }
             </div>
-            <div className='col-md-6'>
+            <div className='col-md-7'>
               <Timeline
                 tripDays={this.state.tripDays}
                 tripRoute={this.state.tripRoute}
+                tripAgenda={this.state.tripAgenda}
               />
             </div>
           </div>

@@ -1,7 +1,27 @@
 /* VARIBLES */
 $font-handwiting: 'Gochi Hand', cursive;
-$color-primary: #009688;
+$color-primary: #49CCE5;
+$color-success: #009688;
 $color-warning: #FF470E;
+$color-text: #212529;
 
 /* COMMON */ 
 .hidden { display: none }
+header {
+  .navbar-brand{
+    margin-left: 2rem;
+  }
+}
+h1.brand{
+  font-family: $font-handwiting;
+  font-size: 3.5rem;
+}
+
+/* FORMS */
+.col-form-label {
+  padding-top: 10px;
+}
+#dailyInfo {
+  padding: 20px;
+  border: 1px solid $color-success;
+}

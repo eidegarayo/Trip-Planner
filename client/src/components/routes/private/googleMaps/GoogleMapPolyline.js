@@ -10,7 +10,7 @@ const PolylineMap = withGoogleMap((props) => {
       center={new google.maps.LatLng(props.defaultLat, props.defaultLng)}
     >
       <Polyline
-        path={props.path}
+        path={props.polyline}
         options={{
           strokeColor: '#FF5722',
           strokeOpacity: '1.0',

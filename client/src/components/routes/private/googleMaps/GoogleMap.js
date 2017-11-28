@@ -6,7 +6,7 @@ const SimpleMap = withGoogleMap((props) => {
   const lng = props.lng
   return (
     <GoogleMap
-      defaultZoom={12}
+      defaultZoom={10}
       center={{ lat: lat, lng: lng }}
     >
       {props.isMarkerShown && <Marker position={{ lat: lat, lng: lng }} />}
