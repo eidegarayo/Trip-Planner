@@ -1,3 +1,4 @@
+/* global __BASE */
 const UserTrip = require(`${__BASE}/models/UserTrip`)
 
 function getTripInfo (req, res) {

@@ -1,12 +1,15 @@
+/* global __BASE */
 const UserTrip = require(`${__BASE}/models/UserTrip`)
 
 function updateTrip (req, res) {
   const { tripPath, tripRoute, tripAgenda } = req.body
-  console.log(tripAgenda)
   UserTrip.updateOne(
-    {"path": tripPath},
+    {'path': tripPath},
     {
-      $set: {"itinerary": tripRoute, "agenda": tripAgenda},
+      $set: {
+        'itinerary': tripRoute,
+        'agenda': tripAgenda
+      }
     }
   )
   .then(response =>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Masonry from 'react-masonry-component';
+import Masonry from 'react-masonry-component'
 import SimpleMap from '../googleMaps/GoogleMap'
 
 const Timeline = (props) => {
@@ -10,8 +10,6 @@ const Timeline = (props) => {
         days.map((day, i) => {
           if (props.tripRoute[i]) {
             let imgUrl = props.tripRoute[i].imgUrl
-            let dailyInfo
-            (props.tripAgenda[i]) ? dailyInfo = props.tripAgenda[i].replace(new RegExp('\r?\n','g'), '<br />') : ''
 
             return (
               <div className='item' key={i}>
@@ -20,9 +18,7 @@ const Timeline = (props) => {
                   Día {i}. {props.tripRoute[i].address}
                 </div>
                 <div className='row'>
-                
-                
-                  <div className='col-md-4'>
+                  <div className='col-lg-4'>
                     <SimpleMap
                       isMarkerShown
                       loadingElement={<div style={{ height: `100%` }} />}
@@ -32,32 +28,29 @@ const Timeline = (props) => {
                       lng={props.tripRoute[i].lng}
                     />
                   </div>
-                  <div className='col-md-8 dailyInfo'>
-                  <p>AGENDA DEL DÍA</p>
-                  {
-                    props.tripAgenda[i].split('\n').map((item, key) => {
-                      return <p className='dailyInfo-text' key={key}>{item}</p>
-                    })
-                  }
-                </div>
+                  <div className='col-lg-8 dailyInfo'>
+                    <p>AGENDA DEL DÍA</p>
+                    {
+                      (props.tripAgenda[i]) ? props.tripAgenda[i].split('\n').map((item, key) => {
+                        return <p className='dailyInfo-text' key={key}>{item}</p>
+                      }) : ''
+                    }
                   </div>
-
-                  <Masonry className={'item-masonry row'}>
+                </div>
+                <Masonry className={'item-masonry row'}>
                   {
                     (typeof imgUrl !== 'string')
                     ? (
-                      imgUrl.map((url, i) => {
+                      imgUrl.map((url, index) => {
                         return (
-                          <div className='col-md-4 image-element-class' key={i}><img className='img-fluid' src={url}  /></div>
+                          <div className='col-lg-4 col-sm-6 image-element-class' key={index}><img className='img-fluid' src={url} alt={props.tripRoute[i].address} /></div>
                         )
                       })
                       )
-                      : (<div className='col-md-4'><img src={imgUrl} className='img-thumbnail img-fluid' key={i} /></div>)
+                      : (<div className='col-md-6'><img src={imgUrl} className='img-thumbnail img-fluid' alt={props.tripRoute[i].address} /></div>)
                   }
-                  </Masonry>
-                </div>
-
-              
+                </Masonry>
+              </div>
             )
           }
         })

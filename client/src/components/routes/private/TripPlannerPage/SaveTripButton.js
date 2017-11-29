@@ -3,9 +3,7 @@ import AlertContainer from 'react-alert'
 import { updateTrip } from '../../../../services/api'
 
 class SaveTripButton extends Component {
-  constructor(props){
-    super(props)
-  }
+
 
   handleUpdateTrip = async (e) => {
     const { tripPath, tripRoute, tripAgenda } = this.props

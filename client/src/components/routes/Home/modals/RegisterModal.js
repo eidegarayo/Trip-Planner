@@ -88,12 +88,13 @@ class RegisterModal extends Component {
                 </button>
               </div>
               <div className='modal-body'>
+                
                 <form onSubmit={this.handleRegister} id='form-register'>
 
                   <hr/>
                   
                   <div className='form-group row'>
-                    <label htmlFor='username' class='col-sm-4 col-form-label'>Usuario</label>
+                    <label htmlFor='username' className='col-sm-4 col-form-label'>Usuario</label>
                     <div className="col-sm-8">
                       <input
                         name='username'
@@ -109,7 +110,7 @@ class RegisterModal extends Component {
                   </div>
 
                   <div className='form-group row'>
-                    <label htmlFor='password' class='col-sm-4 col-form-label'>Contraseña</label>
+                    <label htmlFor='password' className='col-sm-4 col-form-label'>Contraseña</label>
                     <div className="col-sm-8">
                       <input
                         name='password'
@@ -127,7 +128,7 @@ class RegisterModal extends Component {
                   <hr/>
 
                   <div className='form-group row'>
-                    <label htmlFor='inputTripName' class='col-sm-4 col-form-label'>Título de tu viaje</label>
+                    <label htmlFor='inputTripName' className='col-sm-4 col-form-label'>Título de tu viaje</label>
                     <div className="col-sm-8">
                       <input
                         name='tripName'
@@ -144,7 +145,7 @@ class RegisterModal extends Component {
                   </div>
 
                   <div className='form-group row'>
-                    <label htmlFor='inputTripDays' class='col-sm-8 col-form-label'>¿Cuántos días dura tu aventura?</label>
+                    <label htmlFor='inputTripDays' className='col-sm-8 col-form-label'>¿Cuántos días dura tu aventura?</label>
                     <div className="col-sm-4">
                       <input
                         name='tripDays'

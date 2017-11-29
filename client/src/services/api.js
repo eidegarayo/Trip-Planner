@@ -19,40 +19,19 @@ export const register = (username, password, tripName, tripDays) => {
   return axios.post(url, data)
 }
 
-export const userLogin = (tripName, tripPassword) => {
-  const tripUsername = tripName.replace(/ /g, '-').toLowerCase()
+export const userLogin = (username, password) => {
   const userLoginUrl = `/login`
-  const userLoginInfo = axios.post(
-    userLoginUrl,
-    {
-      username: tripUsername,
-      password: tripPassword
-    }
-  )
-  return new Promise((resolve, reject) =>
-    resolve(userLoginInfo)
-    )
+  const data = { username, password }
+  return axios.post(userLoginUrl, data)
 }
 
 export const getUserTripInfo = tripPathName => {
   const userTripUrl = `/api/trip-planner/${tripPathName}`
-  const userTripInfo = axios(userTripUrl)
-  return new Promise((resolve, reject) =>
-    resolve(userTripInfo)
-    )
+  return axios(userTripUrl)
 }
 
 export const updateTrip = (tripPath, tripRoute, tripAgenda) => {
   const tripUpdateUrl = `/api/trip-planner/${tripPath}`
-  const tripUpdate = axios.put(
-    tripUpdateUrl,
-    {
-      tripPath: tripPath,
-      tripRoute: tripRoute,
-      tripAgenda: tripAgenda
-    }
-  )
-  return new Promise((resolve, reject) =>
-    resolve(tripUpdate)
-  )
+  const data = { tripPath, tripRoute, tripAgenda }
+  return axios.put(tripUpdateUrl, data)
 }

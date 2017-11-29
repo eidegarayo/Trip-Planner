@@ -64,6 +64,8 @@ h1.brand {
       margin-bottom: 1rem; }
   .item p {
     margin-top: 15px; }
+  .item div.img-thumbnail {
+    margin-bottom: 1rem; }
   .item img {
     padding: .25rem;
     border: 1px solid #ddd;
@@ -352,3 +354,5 @@ h1.brand {
 
 footer {
   margin-top: 5em; }
+  footer i {
+    vertical-align: bottom; }

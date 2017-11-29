@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 
 class SuitcaseFigure extends Component {
-  constructor (props) {
-    super(props)
-  }
 
   handleOnClick = (e) =>  {
     const stikerName = e.target.id

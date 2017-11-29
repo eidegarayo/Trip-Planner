@@ -1,3 +1,4 @@
+/* global __BASE */
 const { Strategy, ExtractJwt } = require('passport-jwt')
 
 const UserTrip = require(`${__BASE}/models/UserTrip`)
@@ -9,8 +10,8 @@ const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
 }
 
-const strategy = new Strategy(jwtOptions, (jwt_payload, done) => {
-  UserTrip.findById(jwt_payload.id)
+const strategy = new Strategy(jwtOptions, (jwtPayload, done) => {
+  UserTrip.findById(jwtPayload.id)
     .then(trip => {
       if (trip) done(null, trip)
       else done(null, false)

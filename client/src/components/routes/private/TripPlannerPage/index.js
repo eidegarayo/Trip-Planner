@@ -95,7 +95,7 @@ class TripPlannerPage extends Component {
                         <div className='card-header' role='tab' id='headingTwo'>
                           <h5 className='mb-0'>
                             <a className='collapsed' data-toggle='collapse' href={collapseNameRef} aria-expanded='false' aria-controls='collapseTwo'>
-                              <i className='material-icons'>place</i>
+                              <i className='material-icons'>add_location</i>
                               Día {i + 1}. {tripRouteCity}
                             </a>
                           </h5>

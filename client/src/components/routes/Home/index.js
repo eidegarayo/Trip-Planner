@@ -14,9 +14,7 @@ const Home = () => (
               <p className='lead'>Cuaderno y boli es la manera gratuita, flexible y visual de organizar tu viaje.</p>
               <hr className='my-4' />
               <p>Deja de lado los cuadernos llenos de anotaciones inconexas, los papeles sueltos, la repetición de datos. Cuaderno y boli te permite ver el progreso de la organización de tu viaje de un solo vistazo.</p>
-              <RegisterModal
-                text='Regístra tu viaje. ¡Es gratis!'
-              />
+              <RegisterModal text='Regístra tu viaje. ¡Es gratis!' />
             </div>
           </div>
         </div>

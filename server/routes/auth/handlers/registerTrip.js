@@ -1,8 +1,9 @@
+/* global __BASE */
 const UserTrip = require(`${__BASE}/models/UserTrip`)
 
 function registerUserTrip (req, res) {
   const { username, password, tripName, tripDays, tripUrl } = req.body
- 
+
   const newUserTrip = new UserTrip({
     username,
     title: tripName,

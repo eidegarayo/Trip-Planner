@@ -10,12 +10,8 @@ const Header = () => (
         <img src='/img/logo.png' width='150' height='' className='d-inline-block align-top' alt='logo' />
       </Link>
       <div className='navbar-nav'>
-        <LoginModal
-          text='Iniciar sesión'
-        />
-        <RegisterModal
-          text='Registrar viaje'
-        />
+        <LoginModal text='Iniciar sesión' />
+        <RegisterModal text='Registrar viaje' />
       </div>
     </nav>
   </header>
