@@ -125,7 +125,7 @@ class TripRoute extends Component {
             </div>
             <div className='col-md-3'>
               <div className='card'>
-                <h2>DESTINOS</h2>
+                <p className='route-title'>DESTINOS</p>
                 <ul className='list-group'>
                   {
                     addresses.map((address, i) => {

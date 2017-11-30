@@ -4,11 +4,13 @@
   display: none; }
 
 header .navbar-brand {
-  margin-left: 2rem; }
+  margin-left: 2rem;
+  padding: 0; }
 
 h1.brand {
-  font-family: "Gochi Hand", cursive;
-  font-size: 3.5rem; }
+  font-family: "Satisfy", cursive;
+  font-size: 4rem;
+  margin-bottom: 0; }
 
 /* FORMS */
 .col-form-label {
@@ -62,8 +64,6 @@ h1.brand {
     margin-top: 1rem; }
     .item-masonry .image-element-class {
       margin-bottom: 1rem; }
-  .item p {
-    margin-top: 15px; }
   .item div.img-thumbnail {
     margin-bottom: 1rem; }
   .item img {
@@ -85,10 +85,12 @@ h1.brand {
       position: absolute;
       top: -1rem;
       left: 15rem; }
-  .item .dailyInfo > p:first-child {
-    border-bottom: 1px solid #FF470E; }
+  .item .agenda-title {
+    border-bottom: 1px solid #FF470E;
+    margin-top: 15px; }
   .item .dailyInfo-text {
-    margin-left: 1rem; }
+    margin-left: 1rem;
+    margin-bottom: 0; }
 
 #PlacesAutocomplete__autocomplete-container {
   z-index: 1; }
@@ -101,8 +103,8 @@ h1.brand {
   .mainTitle h1 {
     margin-bottom: 0;
     padding: 0.5rem 5rem;
-    font-family: "Gochi Hand", cursive;
-    font-size: 5rem; }
+    font-family: "Satisfy", cursive;
+    font-size: 4rem; }
   .mainTitle button {
     vertical-align: super; }
 
@@ -134,19 +136,19 @@ h1.brand {
     top: -1rem;
     left: 50%; }
 
-.route h2 {
-  font-size: 16px;
+.route .route-title {
+  font-size: 1rem;
   border-bottom: 1px solid #FF470E;
   margin-top: 15px; }
 
-.list-group-item :first-child {
-  margin-right: 0.5rem; }
+.route .list-group-item {
+  padding: 0.50rem; }
 
 .suitcase {
   margin-top: 4rem; }
   .suitcase span {
     position: absolute;
-    font-family: "Gochi Hand", cursive;
+    font-family: "Satisfy", cursive;
     font-weight: bold;
     font-size: 1.4rem;
     z-index: 4; }
@@ -372,6 +374,10 @@ h1.brand {
         .suitcase-front_stiker_3 span:hover {
           cursor: pointer; }
 
+.pdf button {
+  display: block;
+  margin: 0 auto; }
+
 #pdfContent {
   background: #fff;
   padding: 0.5rem;
@@ -380,9 +386,6 @@ h1.brand {
   margin: 0.5rem auto; }
   #pdfContent h1 {
     font-size: 2rem; }
-  #pdfContent button {
-    display: block;
-    margin: 0 auto; }
   #pdfContent .card-pdf {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

@@ -7,7 +7,7 @@ const Header = () => (
   <header>
     <nav className='navbar navbar-expand-lg navbar-light justify-content-between'>
       <Link to='/' className='navbar-brand'>
-        <h1>Cuaderno y boli</h1>
+        <h1 className='brand'>Cuaderno y boli</h1>
       </Link>
       <div className='navbar-nav'>
         <LoginModal text='Iniciar sesión' />

@@ -29,7 +29,7 @@ const Timeline = (props) => {
                     />
                   </div>
                   <div className='col-lg-8 dailyInfo'>
-                    <p>AGENDA DEL DÍA</p>
+                    <p className='agenda-title'>AGENDA DEL DÍA</p>
                     {
                       (props.tripAgenda[i]) ? props.tripAgenda[i].split('\n').map((item, key) => {
                         return <p className='dailyInfo-text' key={key}>{item}</p>

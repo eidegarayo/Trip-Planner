@@ -42,10 +42,10 @@ class TripToPdf extends Component {
   render () {
     const days = Array(this.state.tripDays).fill(1)
     return (
-      <div className='pdf'>
+      <div>
         <HeaderPrivate />
-        <div className='container'>          
-          <button className='btn btn-lg btn-info btn-raised mt-5' onClick={this.downloadPdf}>Guardar PDF</button>
+        <div className='container pdf'>          
+          <button className='btn btn-lg btn-info btn-raised mt-4 mb-4' onClick={this.downloadPdf}>Guardar PDF</button>
           <div id='pdfContent'>
           <h1 className='text-center text-uppercase m-2'>{this.state.tripTitle}</h1>
           <div className='row'>

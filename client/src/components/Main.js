@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import Home from './routes/Home'
 import TripPlannerPage from './routes/private/TripPlannerPage/'
@@ -9,11 +9,13 @@ import TripToPdf from './routes/private/TripToPdf'
 
 const Main = () => (
   <div className='main'>
-    <Route exact path='/' component={Home} />
-    <Route exact path='/trip-planner/:tripName' component={TripPlannerPage} />
-    <Route path='/trip-planner/:tripName/route' component={TripRoute} />
-    <Route path='/trip-planner/:tripName/suitcase' component={Suitcase} />
-    <Route path='/trip-planner/:tripName/pdf' component={TripToPdf} />
+    <Switch>
+      <Route exact path='/' component={Home} />
+      <Route exact path='/trip-planner/:tripName' component={TripPlannerPage} />
+      <Route path='/trip-planner/:tripName/route' component={TripRoute} />
+      <Route path='/trip-planner/:tripName/suitcase' component={Suitcase} />
+      <Route path='/trip-planner/:tripName/pdf' component={TripToPdf} />
+    </Switch>
   </div>
 )
 

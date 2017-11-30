@@ -12,13 +12,12 @@
     background-image: url(img/PAPEL-CUADRICULADO-ENVEJECIDO.jpg);
     padding: 15px;
   }
-   h2 {
-    font-size: 16px;
+  .route-title {
+    font-size: 1rem;
     border-bottom: 1px solid $color-warning;
     margin-top: 15px;
   }
-}
-
-.list-group-item :first-child {
-    margin-right: 0.5rem;
+  .list-group-item {
+    padding: 0.50rem ;
+  }
 }
