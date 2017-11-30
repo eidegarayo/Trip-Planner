@@ -10,5 +10,6 @@ router.use(passport.authenticate('jwt', {session: false}))
 router.get('/:tripPathName', getTripInfo)
 router.put('/:tripPathName', updateTrip)
 router.get('/:tripPathName/route', getTripInfo)
+router.get('/:tripPathName/pdf', getTripInfo)
 
 module.exports = router

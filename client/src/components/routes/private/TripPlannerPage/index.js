@@ -27,31 +27,23 @@ class TripPlannerPage extends Component {
         }
       }
     }
-    this.handleTripRoute = this.handleTripRoute.bind(this)
   }
 
-  componentWillMount () {
+  async componentWillMount () {
     const pathName = localStorage.getItem('path')
-    getUserTripInfo(pathName)
-      .then(userTripInfo => {
-        this.setState({
-          tripTitle: userTripInfo.data[0].title,
-          tripPath: userTripInfo.data[0].path,
-          tripDays: userTripInfo.data[0].days,
-          tripAgenda: userTripInfo.data[0].agenda,
-          tripRoute: userTripInfo.data[0].itinerary
-        })
-      })
-      .catch(function (error) {
-        console.error(error)
-      })
+    const userTripInfo = await getUserTripInfo(pathName)
+    this.setState({
+      tripTitle: userTripInfo.data[0].title,
+      tripPath: userTripInfo.data[0].path,
+      tripDays: userTripInfo.data[0].days,
+      tripAgenda: userTripInfo.data[0].agenda,
+      tripRoute: userTripInfo.data[0].itinerary
+    })
   }
 
-  handleTripRoute (data) {
-    const newDay = data[1]
-    const { address, lat, lng, placeId, imgUrl } = data[0]
+  handleTripRoute = (day, address, lat, lng, placeId, imgUrl) => {
     let newTripRoute = this.state.tripRoute
-    newTripRoute[newDay] = { address, lat, lng, placeId, imgUrl }
+    newTripRoute[day] = { address, lat, lng, placeId, imgUrl }
     this.setState({
       tripRoute: newTripRoute
     })

@@ -53,7 +53,7 @@ h1.brand {
     background: antiquewhite; }
     .item > span i {
       line-height: unset;
-      color: #49CCE5; }
+      color: #2196F3; }
   .item-title {
     font-size: 18px;
     font-weight: bold;
@@ -110,7 +110,7 @@ h1.brand {
   background-color: transparent; }
 
 #accordion .card-header h5 a {
-  color: #49CCE5;
+  color: #2196F3;
   font-weight: bold; }
   #accordion .card-header h5 a i {
     vertical-align: bottom;
@@ -118,6 +118,26 @@ h1.brand {
 
 .modal-backdrop {
   z-index: 0; }
+
+.route .card {
+  -webkit-transform: rotate(-1deg);
+  -ms-transform: rotate(-1deg);
+  transform: rotate(-1deg);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  background-color: transparent;
+  background-image: url(img/PAPEL-CUADRICULADO-ENVEJECIDO.jpg);
+  padding: 15px; }
+  .route .card:before {
+    content: url(img/chincheta.png);
+    position: absolute;
+    top: -1rem;
+    left: 50%; }
+
+.route h2 {
+  font-size: 16px;
+  border-bottom: 1px solid #FF470E;
+  margin-top: 15px; }
 
 .list-group-item :first-child {
   margin-right: 0.5rem; }
@@ -351,6 +371,46 @@ h1.brand {
         background-color: rgba(255, 255, 255, 0.5); }
         .suitcase-front_stiker_3 span:hover {
           cursor: pointer; }
+
+#pdfContent {
+  background: #fff;
+  padding: 0.5rem;
+  max-width: 790px;
+  border: 1px solid #ddd;
+  margin: 0.5rem auto; }
+  #pdfContent h1 {
+    font-size: 2rem; }
+  #pdfContent button {
+    display: block;
+    margin: 0 auto; }
+  #pdfContent .card-pdf {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0.125rem;
+    font-size: .875rem;
+    font-weight: normal; }
+    #pdfContent .card-pdf-header {
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      margin-bottom: 0; }
+    #pdfContent .card-pdf-body {
+      padding: 0.5rem; }
+    #pdfContent .card-pdf-title {
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 0.75rem; }
+    #pdfContent .card-pdf-text p {
+      margin-bottom: 0; }
 
 footer {
   margin-top: 5em; }

@@ -12,7 +12,7 @@ const HeaderPublic = () => {
     <header>
       <nav className='navbar navbar-expand-lg navbar-light justify-content-between'>
         <Link to={tripPlannerPath} className='navbar-brand'>
-          <img src='/img/logo.png' width='150' height='' className='d-inline-block align-top' alt='logo' />
+          <h1>Cuaderno y boli</h1>
         </Link>
         <div className='navbar-nav'>
           <Link to={tripPlannerPath}>

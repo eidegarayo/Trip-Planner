@@ -13,17 +13,12 @@ class Suitcase extends Component {
     }
   }
 
-  componentWillMount () {
+  async componentWillMount () {
     const pathName = localStorage.getItem('path')
-    getUserTripInfo(pathName)
-      .then(userTripInfo => {
-        this.setState({
-          tripTitle: userTripInfo.data[0].title
-        })
-      })
-      .catch(function (error) {
-        console.error(error)
-      })
+    const userTripInfo = await getUserTripInfo(pathName)
+    this.setState({
+      tripTitle: userTripInfo.data[0].title
+    })
   }
 
   setSuitcaseSubject = (stikerName) => {

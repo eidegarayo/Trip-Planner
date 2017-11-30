@@ -13,17 +13,16 @@ class PlacesWithStandaloneSearchBox extends Component {
       placeId: '',
       imgUrl: []
     }
-    this.onSearchBoxMounted = this.onSearchBoxMounted.bind(this)
-    this.onPlacesChanged = this.onPlacesChanged.bind(this)
   }
 
-  onSearchBoxMounted (ref) {
+  onSearchBoxMounted = (ref) => {
     this.searchBox = ref
   }
 
-  onPlacesChanged () {
+  onPlacesChanged = () => {
     const places = this.searchBox.getPlaces()
     let getImgUrl = []
+    
     if (places[0].photos) {
       for (let i = 0; i < places[0].photos.length; i++) {
         getImgUrl.push(places[0].photos[i].getUrl({'maxWidth': 300, 'maxHeight': 300}))
@@ -38,8 +37,9 @@ class PlacesWithStandaloneSearchBox extends Component {
       placeId: places[0].place_id,
       imgUrl: getImgUrl
     })
+    
     const { address, lat, lng, placeId, imgUrl } = this.state
-    this.props.handleTripRoute([{address, lat, lng, placeId, imgUrl}, this.props.day])
+    this.props.handleTripRoute(this.props.day, address, lat, lng, placeId, imgUrl)
   }
 
   render () {

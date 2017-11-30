@@ -1,7 +1,8 @@
-function saveToken(token, path) {
+/* global localStorage */
+function saveToken (token, path) {
   localStorage.setItem('token', token)
   localStorage.setItem('path', path)
-  return {token, path }
+  return { token, path }
 }
 
 export { saveToken }

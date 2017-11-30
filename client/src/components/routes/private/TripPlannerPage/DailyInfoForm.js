@@ -14,7 +14,6 @@ class DailyInfoForm extends Component {
     })
   }
   componentWillReceiveProps(nextprops) {
-    //console.log(nextprops)
     this.setState({
       dailyInfo: nextprops.value
     })

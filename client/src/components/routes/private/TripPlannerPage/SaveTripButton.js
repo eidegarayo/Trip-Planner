@@ -4,7 +4,6 @@ import { updateTrip } from '../../../../services/api'
 
 class SaveTripButton extends Component {
 
-
   handleUpdateTrip = async (e) => {
     const { tripPath, tripRoute, tripAgenda } = this.props
     

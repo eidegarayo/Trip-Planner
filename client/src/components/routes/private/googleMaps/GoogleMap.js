@@ -2,14 +2,10 @@ import React from 'react'
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
 const SimpleMap = withGoogleMap((props) => {
-  const lat = props.lat
-  const lng = props.lng
+  const { lat, lng } = props
   return (
-    <GoogleMap
-      defaultZoom={10}
-      center={{ lat: lat, lng: lng }}
-    >
-      {props.isMarkerShown && <Marker position={{ lat: lat, lng: lng }} />}
+    <GoogleMap defaultZoom={10} center={{ lat, lng }} >
+      {props.isMarkerShown && <Marker position={{ lat, lng }} />}
     </GoogleMap>
   )
 })

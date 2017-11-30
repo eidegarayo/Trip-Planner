@@ -18,39 +18,35 @@ class TripRoute extends Component {
       tripDirections: '',
       tripRoutePolyline: ''
     }
-    this.getTripDirections = this.getTripDirections.bind(this)
   }
 
-  componentWillMount () {
+  async componentWillMount () {
     const pathName = localStorage.getItem('path')
-    getUserTripInfo(pathName)
-      .then(userTripInfo => {
-        this.setState({
-          tripTitle: userTripInfo.data[0].title,
-          tripPath: userTripInfo.data[0].path,
-          tripDays: userTripInfo.data[0].days,
-          tripRoute: userTripInfo.data[0].itinerary
-        })
-      })
-      .then(this.getTripDirections)
-      .catch(function (error) {
-        console.error(error)
-      })
+    const userTripInfo = await getUserTripInfo(pathName)
+    await this.setState ({
+      tripTitle: userTripInfo.data[0].title,
+      tripPath: userTripInfo.data[0].path,
+      tripDays: userTripInfo.data[0].days,
+      tripRoute: userTripInfo.data[0].itinerary
+    })
+    this.getTripDirections()
   }
 
-  getTripDirections () {
+  getTripDirections = () => {
     const route = this.state.tripRoute
     const days = +this.state.tripDays
 
     const DirectionsService = new google.maps.DirectionsService()
 
     let waypoints = []
-    let destination
+    
     for (let i = 2; i < days; i++) {
       if (route[i]) {
         waypoints.push({location: new google.maps.LatLng(route[i].lat, route[i].lng), stopover: true})
       }
     }
+
+    let destination
     for (let i = 2; i <= days; i++) {
       if (route[i]) {
         destination = new google.maps.LatLng(route[i].lat, route[i].lng)
@@ -128,18 +124,21 @@ class TripRoute extends Component {
             }
             </div>
             <div className='col-md-3'>
-              <ul className='list-group card'>
-                {
-                  addresses.map((address, i) => {
-                    return (
-                      <li key={i} className='list-group-item'>
-                        <i className='material-icons'>place</i>
-                        {address}
-                      </li>
-                    )
-                  })
-                }
-              </ul>
+              <div className='card'>
+                <h2>DESTINOS</h2>
+                <ul className='list-group'>
+                  {
+                    addresses.map((address, i) => {
+                      return (
+                        <li key={i} className='list-group-item'>
+                          <i className='material-icons'>place</i>
+                          {address}
+                        </li>
+                      )
+                    })
+                  }
+                </ul>
+              </div>
             </div>
           </div>
         </div>
