@@ -18,6 +18,10 @@
     margin-top: 15px;
   }
   .list-group-item {
-    padding: 0.50rem ;
+    padding: 0.50rem 0;
+    flex-flow: initial;
+    :first-child {
+      margin-right: 0.25rem;
+    }
   }
 }

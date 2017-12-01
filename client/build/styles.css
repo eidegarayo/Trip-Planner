@@ -142,7 +142,14 @@ h1.brand {
   margin-top: 15px; }
 
 .route .list-group-item {
-  padding: 0.50rem; }
+  padding: 0.50rem 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: initial;
+  -ms-flex-flow: initial;
+  flex-flow: initial; }
+  .route .list-group-item :first-child {
+    margin-right: 0.25rem; }
 
 .suitcase {
   margin-top: 4rem; }
