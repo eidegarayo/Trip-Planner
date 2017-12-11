@@ -17,6 +17,231 @@ $suitcase_width:     490px;
 $suitcase_height:    340px;
 $suitcase_corner: $suitcase_width * 0.04081632653;
 
+@media screen and (max-width: 500px){
+  $suitcase_width:     490px;
+  $suitcase_height:    340px;
+  $suitcase_corner: $suitcase_width * 0.04081632653;
+  .suitcase {
+ 
+    &-handle {
+        
+      &_inner {
+        width: $suitcase_width * 0.2448979592;
+        height: $suitcase_height * 0.1470588235;
+        border-radius: $suitcase_corner $suitcase_corner 0 0;
+        
+        &:after {
+          border-radius: $suitcase_corner/3 $suitcase_corner/3 0 0;
+        }
+      }
+    }
+    
+    &-front {
+      
+      &_body {
+        width: $suitcase_width;
+        height: $suitcase_height;
+      }
+      
+      &_inner {
+        height: $suitcase_height * 0.8529411765;
+        width: $suitcase_width * 0.8979591837;
+      }
+      
+      &_stripe {
+        width: $suitcase_width * 0.04897959184;
+      }
+      
+      &_corner {
+        $corner_size: $suitcase_width * 0.1632653061;
+        width: $corner_size;
+        height: $corner_size;
+        
+        &.corner_1 {
+          top: 0;
+          left: 0;
+          transform: translate(-50%, -50%);
+        }
+        
+        &.corner_2 {
+          top: 0;
+          right: 0;
+          transform: translate(50%, -50%);
+        }
+        
+        &.corner_3 {
+          bottom: 0;
+          right: 0;
+          transform: translate(50%, 50%);
+        }
+        
+        &.corner_4 {
+          bottom: 0;
+          left: 0;
+          transform: translate(-50%, 50%);
+        }
+      }
+      
+      &_stiker {
+        &_1 {
+          span {
+            top: 5%;
+            left: -45%;
+          }
+          z-index: 1;
+          width: 28%;
+          border-radius: 50%;
+          position: absolute;
+          left: 10%;
+          top: 40%;
+          background-color: white;
+          transform: rotate(25deg);
+          
+          &:after {
+            content: '';
+            display: block;
+            padding-top: 100%;
+          }
+          
+          &_inner {
+            position: absolute;
+            width: 85%;
+            height: 85%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background-color: $stiker_color_1;
+            overflow: hidden;
+            
+            .stiker {
+              &_stripe_1 {
+                width: 33%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: $stiker_color_2;
+              }
+              
+              &_stripe_2 {
+                width: 100%;
+                height: 33%;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                background-color: $stiker_color_3;
+              }
+              
+              &_square {
+                width: 33%;
+                height: 33%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        } 
+        
+        &_2 {
+          z-index: 1;
+          width: 25%;
+          border-radius: 50%;
+          position: absolute;
+          left: 65%;
+          top: 55%;
+          background-color: white;
+          transform: rotate(-15deg);
+          
+          &:after {
+            content: '';
+            display: block;
+            padding-top: 100%;
+          }
+          
+          &_inner {
+            position: absolute;
+            width: 78%;
+            height: 78%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background-color: $stiker_color_3;
+            overflow: hidden;
+            
+            .stiker {
+              &_stripe_1 {
+                width: 150%;
+                height: 25%;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                background-color: white;
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+        
+        &_3 {
+          z-index: 1;
+          width: 30%;
+          height: 30%;
+          border-radius: 10%;
+          position: absolute;
+          left: 45%;
+          top: 15%;
+          background-color: $stiker_color_5;
+          transform: rotate(-25deg);
+          overflow: hidden;
+          
+          &:before,
+          &:after {
+            content: '';
+            width: 33.3%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            z-index: 3;
+          }
+          
+          &:before {
+            left: 0;
+            background-color: $stiker_color_4;
+          }
+          
+          &:after {
+            right: 0;
+            background-color: $stiker_color_6;
+          }
+
+          span {
+            top: 30%;
+            left: 5%;
+            background-color: rgba(255, 255, 255, 0.5);
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
 .suitcase {
   margin-top: 4rem;
 

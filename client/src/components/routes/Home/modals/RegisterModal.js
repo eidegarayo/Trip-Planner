@@ -30,7 +30,7 @@ class RegisterModal extends Component {
 
     try {
       await register(username, password, tripName, tripDays)
-      document.getElementById('form-register').className = 'd-none'
+      document.getElementsByClassName('form-register')[0].className = 'd-none'
       document.getElementById('enter').className = 'btn btn-primary d-block'
     } 
     catch(err) {
@@ -89,7 +89,7 @@ class RegisterModal extends Component {
               </div>
               <div className='modal-body'>
                 
-                <form onSubmit={this.handleRegister} id='form-register'>
+                <form onSubmit={this.handleRegister} className='form-register'>
 
                   <hr/>
                   
@@ -100,7 +100,6 @@ class RegisterModal extends Component {
                         name='username'
                         type='text'
                         className='form-control'
-                        id='username'
                         placeholder='Escoge un nombre de usuario...'
                         value={this.state.username}
                         onChange={this.handleChange}
@@ -116,7 +115,6 @@ class RegisterModal extends Component {
                         name='password'
                         type='password'
                         className='form-control'
-                        id='password'
                         placeholder='Contraseña...'
                         value={this.state.password}
                         onChange={this.handleChange}
@@ -134,7 +132,6 @@ class RegisterModal extends Component {
                         name='tripName'
                         type='text'
                         className='form-control'
-                        id='inputTripName'
                         aria-describedby='tripName'
                         placeholder='Mi viaje destino a...'
                         value={this.state.tripName}
@@ -151,7 +148,6 @@ class RegisterModal extends Component {
                         name='tripDays'
                         type='number'
                         className='form-control'
-                        id='inputTripDays'
                         aria-describedby='tripDays'
                         min='1' max='30'
                         placeholder='Número de días'
@@ -172,7 +168,6 @@ class RegisterModal extends Component {
                   </div>
                   <div className='modal-footer'>
                     <button
-                      id='register'
                       type='submit'
                       className='btn btn-primary'
                       onClick={this.handleRegister}

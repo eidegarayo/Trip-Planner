@@ -29,7 +29,7 @@ class TripPlannerPage extends Component {
     }
   }
 
-  async componentWillMount () {
+  async componentDidMount () {
     const pathName = localStorage.getItem('path')
     const userTripInfo = await getUserTripInfo(pathName)
     this.setState({

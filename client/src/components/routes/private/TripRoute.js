@@ -20,7 +20,7 @@ class TripRoute extends Component {
     }
   }
 
-  async componentWillMount () {
+  async componentDidMount () {
     const pathName = localStorage.getItem('path')
     const userTripInfo = await getUserTripInfo(pathName)
     await this.setState ({
@@ -35,8 +35,6 @@ class TripRoute extends Component {
   getTripDirections = () => {
     const route = this.state.tripRoute
     const days = +this.state.tripDays
-
-    const DirectionsService = new google.maps.DirectionsService()
 
     let waypoints = []
     
@@ -59,30 +57,42 @@ class TripRoute extends Component {
         routePolyline.push(new google.maps.LatLng(route[i].lat, route[i].lng))
       }
     }
-
-    DirectionsService.route({
-      origin: new google.maps.LatLng(route[1].lat, route[1].lng),
-      destination: destination,
-      waypoints: waypoints,
-      travelMode: 'DRIVING'
-    }, (result, status) => {
-      if (status === google.maps.DirectionsStatus.OK) {
-        this.setState({
-          tripDirections: result
-        })
-      } else {
-        console.error(`error fetching directions ${result}`)
-        this.setState({
-          tripRoutePolyline: routePolyline
-        })
+    
+    let origin = ''
+    if(route[1]) {
+      origin = new google.maps.LatLng(route[1].lat, route[1].lng)
+    } else {
+      origin = new google.maps.LatLng(0, 0)
+    }
+    console.log(origin)
+    
+    const DirectionsService = new google.maps.DirectionsService()
+    DirectionsService.route(
+      {
+        origin: origin,
+        destination: destination,
+        waypoints: waypoints,
+        travelMode: 'DRIVING'
+      },
+      (result, status) => {
+        if (status === google.maps.DirectionsStatus.OK) {
+          this.setState({
+            tripDirections: result
+          })
+        } else {
+          console.error(`error fetching directions ${result}`)
+          this.setState({
+            tripRoutePolyline: routePolyline
+          })
+        }
       }
-    })
+    )
   }
 
   render () {
     let defaultLat = ''
     let defaultLng = ''
-    if (this.state.tripRoute) {
+    if (this.state.tripRoute && this.state.tripRoute[1]) {
       defaultLat = this.state.tripRoute[1].lat
       defaultLng = this.state.tripRoute[1].lng
     }
